@@ -1,0 +1,25 @@
+{
+  "name": "gridfs-demo",
+  "version": "1.0.0",
+  "main": "dist",
+  "scripts": {
+    "build": "npm run tsc",
+    "tsc": "tsc -p tsconfig.json",
+    "dev": "tsc --watch & NODE_ENV=development nodemon dist",
+    "start": "node dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.18",
+    "typescript": "^5.8.3"
+  }
+}
