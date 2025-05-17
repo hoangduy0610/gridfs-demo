@@ -40,9 +40,9 @@ const UploadPage = () => {
   return (
     <Layout className="app-layout ">
       <Header className="app-header transparent-header">
-        <div className="logo"></div>
+        <Button type="default" onClick={() => window.location.href = "/home"}>Back to Video List</Button>
         <div className="header-actions">
-          <Button type="default" onClick={() => window.location.href = "/home"}>Back to Video List</Button>
+          
           <Button danger onClick={() => {
             localStorage.removeItem("access_token");
             window.location.href = "/";

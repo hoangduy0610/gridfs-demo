@@ -25,16 +25,28 @@
   align-items: center;
 }
 
-.video-item button {
+.watch-button {
   background-color: #1677ff;
   border-color: #1677ff;
   color: white;
   transition: 0.2s;
 }
 
-.video-item button:hover {
+.watch-button:hover {
   background-color: #4096ff;
   border-color: #4096ff;
+}
+
+.delete-button {
+  background-color: #ff4d4f;      /* red base */
+  border-color: #ff4d4f;
+  color: white;
+  transition: 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #ff7875;      /* lighter red on hover */
+  border-color: #ff7875;
 }
 
 .video-item button:disabled {

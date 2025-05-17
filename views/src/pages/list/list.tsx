@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { List, Button, message } from "antd";
 import { useNavigate } from "react-router-dom";
-import { getFilesAPI } from "../../services/api";
+import { deleteFileByIdAPI, getFilesAPI } from "../../services/api";
 import {ReloadOutlined} from "@ant-design/icons";
 import "./list.css";
 
@@ -23,6 +23,21 @@ const VideoListPage = () => {
             }
     };
 
+    const handleDelete = async (id: string) => {
+        try {
+            const res = await deleteFileByIdAPI(id);
+            console.log("API response:", res);
+            if (!res) {
+                message.error("Failed to delete videos.");
+                return;
+            }
+            message.success("Video deleted successfully!");
+            fetchVideos();
+        } catch (err) {
+            message.error("Failed to delete videos.");
+        }
+    };
+
     useEffect(() => {
         fetchVideos();
     }, []);
@@ -32,7 +47,7 @@ const VideoListPage = () => {
         <div className="video-list-header">
             <h1>Video List</h1>
             <Button type="default" icon={<ReloadOutlined />} onClick={() => {
-                fetchVideos;
+                fetchVideos();
                 message.success("Videos reloaded successfully!");
                 }
             } />
@@ -42,9 +57,13 @@ const VideoListPage = () => {
             renderItem={(video: any) => (
             <List.Item className="video-item"
                 actions={[
-                <Button onClick={() => navigate(`/watch/${video._id}`)}>
+                <Button className="watch-button" onClick={() => navigate(`/watch/${video._id}`)}>
                     Watch
                 </Button>,
+                <Button className="delete-button" onClick={() => handleDelete(video._id)}>
+                    Delete
+                </Button>,
+                
                 ]}
             >
                 {video.filename}

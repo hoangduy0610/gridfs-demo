@@ -69,3 +69,13 @@ export const getFileByIdAPI = async (id: string) => {
     return null;
   }
 }
+
+export const deleteFileByIdAPI = async (id: string) => {
+  try {
+    const res = await axios.delete(`/files/${id}`);
+    return res;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
