@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import type { FormProps } from "antd";
-import { App, Button, Checkbox, Form, Input } from "antd";
+import { App, Button,  Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import { loginAPI } from "../../services/api";
-import { useCurrentAppContext } from "../components/context/app.context";
+import { useCurrentAppContext } from "../../components/context/app.context";
+import './login.css';
 
 type FieldType = {
   username: string;
@@ -45,22 +46,20 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center flex-1 h-[100vh] w-[100vw]">
-        <div className="bg-gray-200 rounded-2xl p-12 w-[30vw]">
-            <Form
+    <div className="login-wrapper">
+        <div className="login-box">
+        <h2>Login</h2>
+        <Form
             name="basic"
+            className="login-form"
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
             layout="vertical"
             labelCol={{ span: 24 }}
-            >
+        >
             <Form.Item<FieldType>
-                labelCol={{
-                span: 24,
-                }}
-                wrapperCol={{ span: 24 }}
                 label="Username"
                 name="username"
                 rules={[{ required: true, message: "Please input your username!" }]}
@@ -68,30 +67,27 @@ const LoginPage = () => {
                 <Input />
             </Form.Item>
             <Form.Item<FieldType>
-                labelCol={{
-                span: 24,
-                }}
-                wrapperCol={{ span: 24 }}
                 label="Password"
                 name="password"
                 rules={[{ required: true, message: "Please input your password!" }]}
             >
                 <Input.Password />
             </Form.Item>
-            <Form.Item
-                label={null}
-                wrapperCol={{ span: 24 }}
-                labelCol={{
-                span: 24,
-                }}
-            >
-                <Button type="primary" htmlType="submit" loading={isSubmit}>
-                Login
+            <Form.Item>
+                <Button type="primary" htmlType="submit" loading={isSubmit} block>
+                    Login
                 </Button>
             </Form.Item>
-            </Form>
+        </Form>
+
+        <div className="login-bottom-row">
+            <span>Don't have an account?</span>
+            <Button type="link" onClick={() => navigate("/register")}>
+                Register
+            </Button>
         </div>
         </div>
+    </div>
     );
 };
 

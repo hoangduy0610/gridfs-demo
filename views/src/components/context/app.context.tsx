@@ -18,7 +18,7 @@ const CurrentAppContext = createContext<IAppContext | null>(null);
 export const AppContextProvider = ({children}: TProps) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [user, setUser] = useState<IUser | null>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoading] = useState<boolean>(false);
 
     return (
         <CurrentAppContext.Provider value={{isAuthenticated, setIsAuthenticated, isLoading,  setUser, user }}>
