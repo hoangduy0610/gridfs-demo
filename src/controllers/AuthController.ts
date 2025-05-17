@@ -1,3 +1,4 @@
+import { Auth_CreateUserDto } from '@app/dtos/Auth_CreateUserDto';
 import { Auth_LoginDto } from '@app/dtos/Auth_LoginDto';
 import { RoleGuard } from '@app/guards/RoleGuard';
 import { AuthService } from '@app/services/AuthService';
@@ -9,6 +10,13 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) { }
+
+
+    @Post('/signup')
+    @ApiOperation({ summary: 'Đăng ký', description: 'Api đăng ký người dùng' })
+    async register(@Req() req, @Res() res, @Body() createAuthUserDto : Auth_CreateUserDto) {
+        return res.status(HttpStatus.OK).json(await this.authService.createUser(createAuthUserDto));
+    }
 
     @Post('/signin')
     @ApiOperation({ summary: 'Đăng nhập', description: 'Api đăng nhập người dùng' })
