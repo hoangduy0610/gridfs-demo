@@ -59,3 +59,13 @@ export const getFilesAPI = async () => {
     return null;
   }
 }
+
+export const getFileByIdAPI = async (id: string) => {
+  try {
+    const res = await axios.get(`/files/${id}`);
+    return res;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}

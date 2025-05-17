@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.video-page {
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  font-family: "Courier New", Courier, monospace;
+  color: #444;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.video-player {
+  width: 650px;
+}
+
+.loading-text {
+  font-style: italic;
+  color: #888;
+}
+
+.download-button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

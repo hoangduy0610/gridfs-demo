@@ -10,6 +10,7 @@ import ProtectedRoute from './components/protected-route.tsx'
 import RegisterPage from './pages/register/register.tsx'
 import UploadPage from './pages/upload/upload.tsx'
 import Appx from './components/layout/layout.tsx'
+import VideoPlayerPage from './pages/video-player/video-player.tsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/upload',
     element: <ProtectedRoute><UploadPage/></ProtectedRoute>,
+  },
+  {
+    path: '/watch/:id',
+    element: <ProtectedRoute><VideoPlayerPage/></ProtectedRoute>,
   }
 ])
 

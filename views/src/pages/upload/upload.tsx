@@ -33,7 +33,7 @@ const UploadPage = () => {
     } catch (err) {
       message.error("Tải lên lỗi!");
     } finally {
-      setIsUploading(false); // end loading
+      setIsUploading(false); 
     }
   };
 
