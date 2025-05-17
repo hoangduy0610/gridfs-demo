@@ -36,3 +36,26 @@ export const registerAPI = async (
     return null;
   }
 }
+export const uploadFilesAPI = async (formData: FormData) => {
+  try {
+    const res = await axios.post("/files/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export const getFilesAPI = async () => {
+  try {
+    const res = await axios.get("/files");
+    return res;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}

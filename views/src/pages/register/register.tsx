@@ -5,6 +5,7 @@ import { useCurrentAppContext } from '../../components/context/app.context';
 import type { FormProps } from 'antd';
 import { registerAPI } from '../../services/api'; // <- make sure this import exists
 import './register.css';
+import '../../pages/register/register.css';
 
 type FieldType = {
   username: string;
@@ -37,11 +38,11 @@ const RegisterPage = () => {
       setUser(res.info);
       setIsAuthenticated(true);
       localStorage.setItem("access_token", res.token);
-      message.success("Đăng ký tài khoản thành công!");
+      message.success("Register successfully!");
       navigate("/");
     } else {
       notification.error({
-        message: "Có lỗi xảy ra",
+        message: "Something went wrong",
         duration: 5,
       });
     }
@@ -92,6 +93,12 @@ const RegisterPage = () => {
             </Button>
           </Form.Item>
         </Form>
+        <div className="login-bottom-row">
+            <span>Already have an account?</span>
+            <Button type="link" onClick={() => navigate("/")}>
+                Return to Login
+            </Button>
+        </div>
       </div>
     </div>
   );

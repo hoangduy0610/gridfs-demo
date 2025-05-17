@@ -27,13 +27,13 @@ const LoginPage = () => {
             setUser(res.info);
             setIsAuthenticated(true);
             localStorage.setItem("access_token", res.token);
-            message.success("Đăng nhập tài khoản thành công!");
+            message.success("Login successfully!");
             console.log("Logged in, navigating to /home");
 
             navigate("/home");
         } else {
             notification.error({
-                message: "Có lỗi xảy ra",
+                message: "Something went wrong",
                 duration: 5,
             });
         }

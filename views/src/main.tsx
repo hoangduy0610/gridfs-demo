@@ -1,16 +1,21 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import Appx from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import {App} from 'antd'
+import {App as AntdApp} from 'antd'
 import { AppContextProvider } from './components/context/app.context.tsx'
 import LoginPage from './pages/login/login'
 import ProtectedRoute from './components/protected-route.tsx'
 import RegisterPage from './pages/register/register.tsx'
+import UploadPage from './pages/upload/upload.tsx'
+import Appx from './components/layout/layout.tsx'
 
 const router = createBrowserRouter([
+  {
+    path: '/home',
+    element: <ProtectedRoute><Appx/></ProtectedRoute>,
+  },
   {
     path: '/',
     Component: LoginPage,
@@ -18,19 +23,20 @@ const router = createBrowserRouter([
   {
     path: '/register',
     Component: RegisterPage,
-  },
+  }
+  ,
   {
-    path: '/home',
-    element: <ProtectedRoute><Appx/></ProtectedRoute>,
+    path: '/upload',
+    element: <ProtectedRoute><UploadPage/></ProtectedRoute>,
   }
 ])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App>
+    <AntdApp>
       <AppContextProvider>
         <RouterProvider router={router} />
       </AppContextProvider>
-    </App>
+    </AntdApp>
   </StrictMode>,
 )
