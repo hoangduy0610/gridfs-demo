@@ -111,7 +111,7 @@ const VideoListPage = () => {
                                 }}
                                 size={'middle'}
                                 getPopupContainer={(trigger) => trigger.parentElement as HTMLElement}
-                                buttonsRender={([leftBtn, rightBtn]) => [
+                                buttonsRender={([_leftBtn, rightBtn]) => [
                                     null,
                                     <span onClick={(e) => e.stopPropagation()}>
                                         {rightBtn}

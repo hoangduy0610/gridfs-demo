@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { App, Button, Form, Input, Select } from 'antd';
+import { App, Button, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useCurrentAppContext } from '../../components/context/app.context';
 import type { FormProps } from 'antd';
@@ -94,10 +94,10 @@ const RegisterPage = () => {
           </Form.Item>
         </Form>
         <div className="login-bottom-row">
-            <span>Already have an account?</span>
-            <Button type="link" onClick={() => navigate("/")}>
-                Return to Login
-            </Button>
+          <span>Already have an account?</span>
+          <Button type="link" onClick={() => navigate("/")}>
+            Return to Login
+          </Button>
         </div>
       </div>
     </div>
