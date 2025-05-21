@@ -9,7 +9,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 const VideoPlayerPage = () => {
   const { id } = useParams();
   const [downloadVideoUrl] = useState<string | null>(null);
-  const videoUrl = 'http://localhost:8000/files';
+  const videoUrl = 'https://gridfs-api.evovou.store/files';
 
   const downloadVideo = () => {
     if (!id) {
@@ -17,7 +17,7 @@ const VideoPlayerPage = () => {
       return;
     }
 
-    const fileUrl = `http://localhost:8000/files/${id}`;
+    const fileUrl = `${videoUrl}/${id}`;
     const link = document.createElement("a");
     link.href = fileUrl;
     link.download = "video.mp4";
