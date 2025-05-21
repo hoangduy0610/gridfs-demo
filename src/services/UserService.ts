@@ -50,13 +50,13 @@ export class UserService {
         if (userDto.description) {
             user.description = userDto.description;
         }
-        if (userDto.role) {
-            if (!Object.values(SystemRoleEnum).includes(userDto.role)) {
-                throw new ApplicationException(HttpStatus.BAD_REQUEST, MessageCode.UNKNOWN_ERROR);
-            }
+        // if (userDto.role) {
+        //     if (!Object.values(SystemRoleEnum).includes(userDto.role)) {
+        //         throw new ApplicationException(HttpStatus.BAD_REQUEST, MessageCode.UNKNOWN_ERROR);
+        //     }
 
-            user.role = userDto.role;
-        }
+        //     user.role = userDto.role;
+        // }
         user.updatedAt = new Date();
 
         try {

@@ -3,6 +3,7 @@ import { MessageCode } from '@app/commons/MessageCode';
 import { ApplicationException } from '@app/controllers/ExceptionController';
 import { Auth_CreateUserDto } from '@app/dtos/Auth_CreateUserDto';
 import { Auth_LoginDto } from '@app/dtos/Auth_LoginDto';
+import { SystemRoleEnum } from '@app/enums/SystemRoleEnum';
 import { UserInterface, UserModal } from '@app/models/User';
 import { StringUtils } from '@app/utils/StringUtils';
 import { HttpStatus, Injectable, Logger } from '@nestjs/common';
@@ -59,7 +60,7 @@ export class AuthService {
 
     async createUser(userDto: Auth_CreateUserDto): Promise<any> {
         try {
-            const requiredFields = ['username', 'password', 'role', 'name', 'email'];
+            const requiredFields = ['username', 'password', 'name', 'email'];
             for (const field of requiredFields) {
                 if (!userDto[field]) {
                     throw new ApplicationException(HttpStatus.BAD_REQUEST, MessageCode.PLEASE_FILL_ALL_REQUIRED_FIELDS);
@@ -79,7 +80,7 @@ export class AuthService {
                 data: new UserModal(await this.userModel.create({
                     username: username,
                     password: hash,
-                    role: userDto.role,
+                    role: SystemRoleEnum.ROLE_USER,
                     name: userDto.name,
                     email: userDto.email,
                     description: userDto.description,

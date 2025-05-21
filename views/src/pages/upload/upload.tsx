@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Layout, Upload, message } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import { uploadFilesAPI } from "../../services/api";
 import './upload.css'
 import '../../components/layout/layout.css'
@@ -19,7 +19,7 @@ const UploadPage = () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    setIsUploading(true); 
+    setIsUploading(true);
 
     try {
       const res = await uploadFilesAPI(formData);
@@ -33,16 +33,23 @@ const UploadPage = () => {
     } catch (err) {
       message.error("Tải lên lỗi!");
     } finally {
-      setIsUploading(false); 
+      setIsUploading(false);
     }
   };
 
   return (
     <Layout className="app-layout ">
       <Header className="app-header transparent-header">
-        <Button type="default" onClick={() => window.location.href = "/home"}>Back to Video List</Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => window.location.href = "/home"}
+        >
+          <ArrowLeftOutlined />
+          Back
+        </Button>
         <div className="header-actions">
-          
+
           <Button danger onClick={() => {
             localStorage.removeItem("access_token");
             window.location.href = "/";
@@ -51,36 +58,42 @@ const UploadPage = () => {
       </Header>
       <Content className="app-content">
         <div className="upload-container">
-        <Form onFinish={onFinish} layout="vertical" className="upload-form">
+          <Form onFinish={onFinish} layout="vertical" className="upload-form">
             <Form.Item label="Select video file">
-                <div className="centered">
-                    <Upload
-                    beforeUpload={(f) => {
-                        setFile(f);
-                        return false;
-                    }}
-                    maxCount={1}
-                        accept="video/*"
-                    >
-                    <Button icon={<UploadOutlined />}>Choose Video</Button>
+              <div className="centered">
+                <Upload
+                  beforeUpload={(f) => {
+                    setFile(f);
+                    return false;
+                  }}
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  maxCount={1}
+                  accept="video/*"
+                >
+                  <Button icon={<UploadOutlined />}>Choose Video</Button>
                 </Upload>
-                </div>
-                
+              </div>
+
             </Form.Item>
             <Form.Item>
-                <div className="centered">
-                    <Button type="primary" htmlType="submit" loading={isUploading}>
-                    Upload
-                    </Button>
-                </div>
+              <div className="centered">
+                <Button type="primary" htmlType="submit" loading={isUploading}>
+                  Upload
+                </Button>
+              </div>
             </Form.Item>
           </Form>
         </div>
       </Content>
-      
+
     </Layout>
-    
-    
+
+
   );
 };
 

@@ -27,7 +27,6 @@ const Appx = () => {
         </div>
       </Header>
       <Content className="app-content">
-        <h1>Hi there 👋🏻</h1>
         <VideoListPage/>
         
       </Content>

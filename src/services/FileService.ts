@@ -12,6 +12,7 @@ export class FilesService {
     }
 
     async uploadFile(file: Express.Multer.File) {
+        file.originalname = Buffer.from(file.originalname, 'latin1').toString('utf8')
         const uploadStream = this.bucket.openUploadStream(file.originalname, {
             contentType: file.mimetype,
         });
@@ -47,7 +48,7 @@ export class FilesService {
             const downloadStream = this.bucket.openDownloadStream(new ObjectId(id));
             return {
                 stream: downloadStream,
-                filename: files[0].filename,  // Original filename with extension
+                filename: "GridFsDemo.mp4",  // Original filename with extension
                 contentType: files[0].contentType
             };
         } catch (error) {

@@ -10,7 +10,7 @@ import '../../pages/register/register.css';
 type FieldType = {
   username: string;
   password: string;
-  role: string;
+  // role: string;
   name: string;
   email: string;
   description: string;
@@ -27,7 +27,7 @@ const RegisterPage = () => {
     const res = await registerAPI(
       values.username,
       values.password,
-      values.role,
+      // values.role,
       values.name,
       values.email,
       values.description
@@ -72,12 +72,12 @@ const RegisterPage = () => {
           <Form.Item label="Password" name="password" rules={[{ required: true }]}>
             <Input.Password />
           </Form.Item>
-          <Form.Item label="Role" name="role" rules={[{ required: true }]}>
+          {/* <Form.Item label="Role" name="role" rules={[{ required: true }]}>
             <Select placeholder="Select a role">
               <Select.Option value="ROLE_ADMIN">Admin</Select.Option>
                 <Select.Option value="ROLE_USER">User</Select.Option>
             </Select>
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item label="Name" name="name" rules={[{ required: true }]}>
             <Input />
           </Form.Item>

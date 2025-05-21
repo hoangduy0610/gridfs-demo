@@ -16,7 +16,7 @@ export const loginAPI = async (username: string, password: string) => {
 export const registerAPI = async (
   username: string,
   password: string,
-  role: string,
+  // role: string,
   name: string,
   email: string,
   description: string
@@ -25,7 +25,7 @@ export const registerAPI = async (
     const res = await axios.post("/auth/signup", {
       username,
       password,
-      role,
+      // role,
       name,
       email,
       description,

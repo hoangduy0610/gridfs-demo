@@ -3,8 +3,8 @@ import { Auth_LoginDto } from './Auth_LoginDto';
 import { SystemRoleEnum } from '@app/enums/SystemRoleEnum';
 
 export class Auth_CreateUserDto extends Auth_LoginDto {
-    @ApiProperty({ type: String, enum: SystemRoleEnum, required: true })
-    readonly role: SystemRoleEnum;
+    // @ApiProperty({ type: String, enum: SystemRoleEnum, required: true })
+    // readonly role: SystemRoleEnum;
 
     @ApiProperty({ type: String, required: true })
     readonly name: string;
