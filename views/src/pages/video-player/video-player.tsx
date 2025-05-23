@@ -1,13 +1,17 @@
-import { Button, Layout, message } from "antd";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import "./video-player.css";
-import { Content, Header } from "antd/es/layout/layout";
-import "../../components/layout/layout.css";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { Button, Layout, message } from "antd";
+import { Content, Header } from "antd/es/layout/layout";
+import { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import "../../components/layout/layout.css";
+import "./video-player.css";
 
 const VideoPlayerPage = () => {
   const { id } = useParams();
+  // get navigation state
+  const location = useLocation();
+  const video = location.state?.video;
+  const filename = video?.filename.split(".")[0] || "Unnamed Video";
   const [downloadVideoUrl] = useState<string | null>(null);
   const videoUrl = 'https://gridfs-api.evovou.store/files';
 
@@ -50,7 +54,10 @@ const VideoPlayerPage = () => {
       </Header>
       <Content className="app-content">
         <div className="video-page">
-          <h2>Now Playing</h2>
+          <h2>Now Playing:</h2>
+          <h3>{filename}</h3>
+
+          <br />
 
           {videoUrl ? (
             <video controls width="100%" autoPlay >

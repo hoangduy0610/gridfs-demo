@@ -42,6 +42,14 @@ const VideoListPage = () => {
         }
     };
 
+    const navigateToVideo = (video: any) => {
+        navigate(`/watch/${video._id}`, {
+            state: {
+                video: video,
+            }
+        })
+    };
+
     const getMenuProps = (video: any) => ({
         items: [
             {
@@ -49,7 +57,7 @@ const VideoListPage = () => {
                 key: '1',
                 icon: <EyeOutlined />,
                 onClick: () => {
-                    navigate(`/watch/${video._id}`)
+                    navigateToVideo(video);
                 }
             },
             {
@@ -96,7 +104,7 @@ const VideoListPage = () => {
                         style={{
                             cursor: "pointer",
                         }}
-                        onClick={() => navigate(`/watch/${video._id}`)}
+                        onClick={() => navigateToVideo(video)}
                     >
                         <Card
                             cover={<img alt="video thumbnail" src="https://douglasgreen.com/wp-content/uploads/2014/03/video-play-btn-featured.png" />}
